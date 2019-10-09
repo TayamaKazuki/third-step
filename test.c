@@ -9,8 +9,8 @@ int main()
     double y[M] = {44.0,87.0,100.0,63.0, 52.0, 60.0, 58.0, 73.0, 55.0, 86.0, 29.0, 56.0, 89.0, 23.0, 65.0, 84.0, 64.0, 27.0, 86.0, 84.0};
     double heikin_x = 0.0, heikin_y = 0.0;
     double bun_x = 0.0, bun_y = 0.0, bun = 0.0;
-    double hensa_x, hensa_y, cor;
-    int i;
+    double hensa_x, hensa_y, cor, tmp;
+    int i, j;
  
     for(i = 0; i < M; i++)
     {
@@ -38,4 +38,28 @@ int main()
     printf("英語の\n平均点は%f点です。\n", heikin_y);
     printf("理科の\n標準偏差は%fです。\n", hensa_x);
     printf("英語の\n標準偏差は%fです。\n", hensa_y);
+
+    for (i=0; i<M; ++i) {
+        for (j=i+1; j<M; ++j) {
+            if (x[i] < x[j]) {
+                tmp =  x[i];
+                x[i] = x[j];
+                x[j] = tmp;
+	    }
+            if (y[i] < y[j]) {
+                tmp =  y[i];
+                y[i] = y[j];
+                y[j] = tmp;
+	    }
+        }
+    }
+    printf("理科\n");
+    for(i=0; i<M; i++){
+	printf("%f\n",x[i]);
+    }
+    printf("英語\n");
+    for(i=0; i<M; i++){
+        printf("%f\n",y[i]);
+    }
+
 }
